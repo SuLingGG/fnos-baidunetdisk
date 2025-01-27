@@ -7,7 +7,7 @@
 ```
 .
 ├── baiduapp # 飞牛 OS 特供版百度网盘资源文件 (默认情况下请勿重命名)
-├── docker-compose.yaml # 稍加修改可使用的 docker-compose.yaml 配置
+├── docker-compose.yaml # 稍加修改即可使用的 docker-compose.yaml 配置
 ├── docker-compose.yaml.orig # 从飞牛 OS 中提取的 docker-compose.yaml 源文件 (未经更改)
 └── README.md # 本自述文件
 ```
