@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+
+  myapp:
+
+    build: /var/apps/baiduapp/target/app/baiduapp
+
+    image: baiduapp:1.0
+    container_name: baiduapp
+
+    volumes:
+      - ${TRIM_DATA_SHARE_PATHS}/来自：百度网盘:/app/来自：百度网盘
+      - ${TRIM_DATA_SHARE_PATHS}/db:/app/db
+      - ${TRIM_DATA_SHARE_PATHS}/sdk/tmp/Config:/app/sdk/tmp/Config
+
+    networks:
+      - baiduapp
+
+    environment:
+      - DEVICE_ID=${TRIM_SYS_MACHINE_ID}
+      - SYS_VERSION=${TRIM_SYS_VERSION}
+
+    ports:
+      - "8092:8080/tcp"
+
+    restart: always
+
+networks:
+  baiduapp:
+    driver: bridge

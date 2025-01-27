@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+
+  myapp:
+
+    build: ./baiduapp
+
+    image: baiduapp:1.0
+    container_name: baiduapp
+
+    volumes:
+      - ./downloads:/app/来自：百度网盘
+      - ./db:/app/db
+      - ./sdk/tmp/Config:/app/sdk/tmp/Config
+
+    networks:
+      - baiduapp
+
+    environment:
+      # !!! 目前 DEVICE_ID 作用未知，为百度账号安全考虑，请不要使用下面提供的 DEVICE_ID !!!
+      ## DEVICE_ID 变量为40位随机字符串，可选范围为 a~f (小写) & 0~9
+      ### 示例：40dadef0d361a251169d9cfb850f71c3abbdcec7b4
+      # SYS_VERSION 变量保持默认 0.8.36 即可
+      - DEVICE_ID=
+      - SYS_VERSION=0.8.36
+
+    ports:
+      - "8092:8080/tcp"
+
+    restart: always
+
+networks:
+  baiduapp:
+    driver: bridge
